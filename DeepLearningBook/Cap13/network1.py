@@ -18,6 +18,7 @@ mais avançados serão discutidos nos próximos capítulos do livro.
 # Imports
 import random
 import numpy as np
+
 """
 Futuramente adicionar mais funções de ativação ao código para incrementar e
 adicionar no github
@@ -51,7 +52,7 @@ class Network(object):
     def feedforward(self, a):
         """Retorna a saída da rede se `a` for input."""
         for b, w in zip(self.biases, self.weights):
-            a = sigmoid(np.dot(w, a)+b)
+            a = sigmoid(np.dot(w, a) + b)
         return a
 
     def SGD(self, training_data, epochs, mini_batch_size, eta, test_data=None):
@@ -76,7 +77,7 @@ class Network(object):
 
             # Complexidade alta na linha
             mini_batches = [
-                training_data[k:k+mini_batch_size]
+                training_data[k:k + mini_batch_size]
                 for k in range(0, n, mini_batch_size)]
 
             for mini_batch in mini_batches:
@@ -84,7 +85,7 @@ class Network(object):
 
             if test_data:
                 print("Epoch {} : {} / {}".format(j,
-                      self.evaluate(test_data), n_test))
+                                                  self.evaluate(test_data), n_test))
             else:
                 print("Epoch {} finalizada".format(j))
 
@@ -100,13 +101,13 @@ class Network(object):
 
         for x, y in mini_batch:
             delta_nabla_b, delta_nabla_w = self.backprop(x, y)
-            nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
-            nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+            nabla_b = [nb + dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+            nabla_w = [nw + dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
 
-        self.weights = [w-(eta/len(mini_batch))*nw for w,
-                        nw in zip(self.weights, nabla_w)]
-        self.biases = [b-(eta/len(mini_batch))*nb for b,
-                       nb in zip(self.biases, nabla_b)]
+        self.weights = [w - (eta / len(mini_batch)) * nw for w,
+        nw in zip(self.weights, nabla_w)]
+        self.biases = [b - (eta / len(mini_batch)) * nb for b,
+        nb in zip(self.biases, nabla_b)]
 
     def backprop(self, x, y):
         """Retorna uma tupla `(nabla_b, nabla_w)` representando o
@@ -127,7 +128,7 @@ class Network(object):
         zs = []
 
         for b, w in zip(self.biases, self.weights):
-            z = np.dot(w, activation)+b
+            z = np.dot(w, activation) + b
             zs.append(z)
             activation = sigmoid(z)
             activations.append(activation)
@@ -144,9 +145,9 @@ class Network(object):
         for lst in range(2, self.num_layers):
             z = zs[-lst]
             sp = sigmoid_prime(z)
-            delta = np.dot(self.weights[-lst+1].transpose(), delta) * sp
+            delta = np.dot(self.weights[-lst + 1].transpose(), delta) * sp
             nabla_b[-lst] = delta
-            nabla_w[-lst] = np.dot(delta, activations[-lst-1].transpose())
+            nabla_w[-lst] = np.dot(delta, activations[-lst - 1].transpose())
         return (nabla_b, nabla_w)
 
     def evaluate(self, test_data):
@@ -161,14 +162,14 @@ class Network(object):
 
     def cost_derivative(self, output_activations, y):
         """Retorna o vetor das derivadas parciais."""
-        return (output_activations-y)
+        return (output_activations - y)
 
 
 # Função de Ativação Sigmóide
 def sigmoid(z):
-    return 1.0/(1.0+np.exp(-z))
+    return 1.0 / (1.0 + np.exp(-z))
 
 
 # Função para retornar as derivadas da função Sigmóide
 def sigmoid_prime(z):
-    return sigmoid(z)*(1-sigmoid(z))
+    return sigmoid(z) * (1 - sigmoid(z))
