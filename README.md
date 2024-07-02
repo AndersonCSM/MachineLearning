@@ -1,4 +1,3 @@
-# English
 ## About
 Repository for machine learning projects.
 
@@ -10,7 +9,6 @@ Repository for machine learning projects.
 - Contact email: andersoncarlos799@gmail.com
 
 ---
-# Português Brasil
 ## Sobre
 Repositório para projetos em aprendizado de máquina.
 
