@@ -1,4 +1,3 @@
-# English
 ## About
 Repository for machine learning projects.
 
@@ -6,11 +5,10 @@ Repository for machine learning projects.
 - python3 and python3 libraries: SKlearn, keras;
 
 ## Contact
-- Social networks:https://github.com/AndersonCSM
+- Social networks: https://github.com/AndersonCSM
 - Contact email: andersoncarlos799@gmail.com
 
 ---
-# Português Brasil
 ## Sobre
 Repositório para projetos em aprendizado de máquina.
 
@@ -18,7 +16,7 @@ Repositório para projetos em aprendizado de máquina.
 - python3 and python3 libraries: SKlearn, keras;
 
 ## Contato
-- Redes sociais:https://github.com/AndersonCSM
+- Redes sociais: https://github.com/AndersonCSM
 - email de contato: andersoncarlos799@gmail.com
 
 ---
